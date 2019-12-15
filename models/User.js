@@ -29,7 +29,10 @@ class UserModel{
           allowNull: false
         }
       },
-      {underscored: true})
+      {
+        underscored: true,
+        timestamps: true
+      })
   }
 }
 

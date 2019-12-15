@@ -7,14 +7,13 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   helmet = require('helmet'),
   customUrlParser = require('url'),
-  URL = require('url').URL;
+  URL = require('url').URL,
+  uuidV4 = require('uuid/v4');
 
-const requestSharedNameSpace = createNamespace('whitepandaNameSpace');
+const requestSharedNameSpace = createNamespace('casaoneNameSpace');
 
 const basicHelper = require(rootPrefix + '/helpers/basic'),
-  coreConstants = require(rootPrefix + '/coreConstants'),
-  customMiddleware = require(rootPrefix + '/helpers/customMiddleware'),
-  sanitizer = require(rootPrefix + '/helpers/sanitizer');
+  coreConstants = require(rootPrefix + '/coreConstants');
 
 const apiRoutes = require(rootPrefix + '/routes/index');
 
@@ -111,7 +110,11 @@ process.title = 'Casaone api node worker';
 const app = express();
 
 // Add id and startTime to request
-app.use(customMiddleware());
+app.use(function(req, res, next){
+  req.id = uuidV4();
+  req.startTime = process.hrtime();
+  next();
+} );
 
 // Load Morgan
 app.use(
@@ -144,7 +147,7 @@ app.use(setResponseHeader);
 /**
  * NOTE: API routes where first sanitize and then assign params
  */
-app.use('/', sanitizer.sanitizeBodyAndQuery, assignParams, apiRoutes);
+app.use('/',assignParams, apiRoutes);
 
 // Catch 404
 app.use(function(req, res, next) {
