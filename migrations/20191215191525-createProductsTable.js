@@ -30,7 +30,13 @@ module.exports = {
       },
       review_count: {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: false,
+        defaultValue: 0
+      },
+      is_available: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       created_at: {
         type: Sequelize.DATE,
