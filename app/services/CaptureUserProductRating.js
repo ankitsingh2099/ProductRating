@@ -101,8 +101,6 @@ class CaptureUserProductRating extends ServicesBase{
       product_id: oThis.productId,
       rating: oThis.rating
     });
-  
-    oThis.userId = insertResponse.dataValues.id;
   }
   
 }
