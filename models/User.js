@@ -28,10 +28,8 @@ class UserModel{
           type: Sequelize.STRING,
           allowNull: false
         }
-      },
-      {
-        underscored: true,
-        timestamps: true
+      }, {
+        underscored: true
       })
   }
 }

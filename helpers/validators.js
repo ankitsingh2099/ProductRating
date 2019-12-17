@@ -472,6 +472,17 @@ class CommonValidator {
   }
   
   /**
+   * Is rating valid
+   *
+   * @param variable
+   * @returns {boolean}
+   */
+  static isValidRating(variable){
+    const allowedRatings = [1,2,3,4,5];
+    return allowedRatings.indexOf(variable) !== -1;
+  }
+  
+  /**
    * Check if mobile number is valid or not
    *
    * @param variable
