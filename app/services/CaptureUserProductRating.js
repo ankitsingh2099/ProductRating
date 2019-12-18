@@ -6,11 +6,12 @@ const rootPrefix = '../..',
   cookieHelper = require(rootPrefix + '/helpers/cookie'),
   CommonValidators = require(rootPrefix + '/helpers/validators');
 
-const PAGE_LENGTH = 30;
 class CaptureUserProductRating extends ServicesBase{
   constructor(params){
     super(params);
     const oThis = this;
+    
+    console.log('--params--', params);
     
     oThis.currentUser = params.current_user;
     oThis.productId = params.product_id;

@@ -53,7 +53,7 @@ class ProductModel{
       },
       {
         underscored: true,
-        timestamps: true
+        timestamps: false
       })
   }
 }

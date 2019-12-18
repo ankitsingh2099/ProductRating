@@ -70,6 +70,7 @@ class GetProducts extends ServicesBase{
     const oThis = this;
     
     let responseData = {
+      success: true,
       result_type: 'products',
       products: [],
       is_next_page_present: false

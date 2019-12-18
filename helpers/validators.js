@@ -478,6 +478,10 @@ class CommonValidator {
    * @returns {boolean}
    */
   static isValidRating(variable){
+    if(!variable){
+      return false;
+    }
+    variable = parseInt(variable);
     const allowedRatings = [1,2,3,4,5];
     return allowedRatings.indexOf(variable) !== -1;
   }
