@@ -33,7 +33,13 @@ class UserProductRatingModel{
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
       }
     },{
-      underscored: true
+      underscored: true,
+      indexes: [
+      {
+        unique: true,
+        fields: ['user_id', 'product_id']
+      }
+    ]
     });
   }
 }

@@ -9,7 +9,11 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    return queryInterface.addIndex('user_product_ratings', ['user_id', 'product_id'], {indicesType: 'UNIQUE'})
+    return queryInterface.addIndex(
+      'user_product_ratings',
+      ['user_id', 'product_id'],
+      {name: 'u_idx1', type: 'UNIQUE'}
+    )
   },
 
   down: (queryInterface, Sequelize) => {

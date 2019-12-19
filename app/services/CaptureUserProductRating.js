@@ -36,6 +36,8 @@ class CaptureUserProductRating extends ServicesBase{
     
     await oThis._insertInUserProductRating();
     
+    await oThis._updateProductsAverageRating();
+    
     return {
       success: true,
       code: 200
@@ -86,6 +88,9 @@ class CaptureUserProductRating extends ServicesBase{
         code: 422,
         error: 'Incorrect product id.'})
     }
+    
+    oThis.currentRating = product.dataValues.average_rating;
+    oThis.reviewsCount  = product.dataValues.review_count;
   }
   
   /**
@@ -101,7 +106,38 @@ class CaptureUserProductRating extends ServicesBase{
       user_id: oThis.userId,
       product_id: oThis.productId,
       rating: oThis.rating
+    }).catch(function(err){
+      if(err.name === 'SequelizeUniqueConstraintError'){
+        return Promise.reject({
+          success: false,
+          code: 422,
+          error: 'User has already provided rating for the given product.'
+        })
+      } else {
+        return Promise.reject(err);
+      }
     });
+  }
+  
+  /**
+   * Update products average rating
+   *
+   * @returns {Promise<void>}
+   * @private
+   */
+  async _updateProductsAverageRating() {
+    const oThis = this;
+  
+    let newProductRating = oThis.rating;
+    if(oThis.currentRating !== null){
+      newProductRating = (parseFloat(oThis.currentRating) + parseFloat(oThis.rating)) / (oThis.reviewsCount + 1);
+    }
+    await ProductsModel.update({
+        average_rating: newProductRating,
+        review_count: oThis.reviewsCount + 1
+      }, {
+        where: {id: oThis.productId}
+      });
   }
   
 }

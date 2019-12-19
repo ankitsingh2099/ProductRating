@@ -13,7 +13,8 @@ exports.productsList = function (req, res) {
         res.status(200).json(serviceResponse);
         res.send();
       } else {
-        res.status(serviceResponse.code).json(serviceResponse);
+        let errorCode = serviceResponse.code || 500;
+        res.status(errorCode).json(serviceResponse);
       }
     }
   });
@@ -30,7 +31,8 @@ exports.captureUserRating = function (req, res) {
         res.status(200).json(serviceResponse);
         res.send();
       } else {
-        res.status(serviceResponse.code).json(serviceResponse);
+        let errorCode = serviceResponse.code || 500;
+        res.status(errorCode).json(serviceResponse);
       }
     }
   });
