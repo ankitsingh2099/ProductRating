@@ -10,9 +10,14 @@ config/config.json
 node executables/createCasaoneDatabase.js
 ```
 
-####Create Table
+####Create Tables
 ```
 node_modules/.bin/sequelize db:migrate
+```
+
+####Add sample products
+```
+node executables/seedSampleProducts.js
 ```
 
 ####Source environment variable
@@ -24,3 +29,8 @@ source set_env_var.sh
 ```
 node ./bin/www
 ```
+
+####Test APIs with postman
+Postman collection is available at /test/postman/ folder
+
+

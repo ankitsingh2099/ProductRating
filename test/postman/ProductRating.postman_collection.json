@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "36120da3-f3c5-4294-a39f-cf125d36f5f8",
+		"name": "ProductRating",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email_id",
+							"value": "ankit@ost.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abcd1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3001/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email_id",
+							"value": "ankit@ost.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abcd1234",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "9579476627",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3001/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProductList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CaptureRating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "product_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3001/rating",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"rating"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
