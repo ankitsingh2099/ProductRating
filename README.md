@@ -1,4 +1,4 @@
-# Whitepanda
+# CasaOne
 
 ####Enter database related details in the following file
 ```
